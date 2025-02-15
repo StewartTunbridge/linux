@@ -1,0 +1,86 @@
+////////////////////////////////////////////////////////////////////
+/// Syntax Highlight - PASCAL programming language
+
+[params]
+CaseInsensitive
+brackets
+
+[Items]
+/// {seTypes, seReserved, sePredef, seSymbols, seString, seComment} _SyntaxElement;
+
+{$	82	sEOL
+
+unit	1
+interface	1
+uses	1
+const	1
+type	1
+var	1
+
+class	1
+record	1
+public	1
+private	1
+
+integer	0
+char	0
+string	0
+boolean	0
+real	0
+double	0
+word	0
+array	0
+of	0
+
+program	1
+procedure	1
+function	1
+
+if	1
+then	1
+else	1
+while	1
+for	1
+to	1
+repeat	1
+until	1
+case	1
+begin	1
+end	1
+
+//	85	sEOL
+shl	1
+shr	1
+=	3
+<>	3
+<=	3
+>=	3
+and	1
+or	1
+eor	1
+not	1
+div	1
+inc	1
+<	3
+>	3
+(	3
+)	3
+:=	3
+-	3
++	3
+*	3
+/	3
+^	3
+mod	1
+..	3
+.	3
+,	3
+;	3
+:	3
+[	3
+]	3
+
+"	44	sQuote
+'	44	sQuote
+
+{	45	sQuote

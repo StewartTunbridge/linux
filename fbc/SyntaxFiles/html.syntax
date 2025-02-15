@@ -1,0 +1,16 @@
+////////////////////////////////////////////////////////////
+/// Syntax Highlight - HTML
+
+[params]
+CaseInsensitive
+brackets
+
+[Items]
+/// {seTypes, seReserved, sePredef, seSymbols, seString, seComment} _SyntaxElement;
+
+"	44	sQuote
+'	44	sQuote
+
+<	41	sQuote
+
+=	3

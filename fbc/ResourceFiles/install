@@ -1,0 +1,2 @@
+sudo cp *.syntax /usr/bin
+sudo cp *.hlp /usr/bin

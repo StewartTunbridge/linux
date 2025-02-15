@@ -1,0 +1,126 @@
+///////////////////////////////////////////////////////////
+///
+/// Syntax Highlight - C programming language (and C++)
+
+[params]
+casesensitive
+brackets
+
+[items]
+///text/symbol(s) <tab> Attributes
+///  Attributes: (hex)
+///    bits 0-4: 0=Types 1=Reserved 2=Predef, 3=Symbols, 4=String, 5=Comment
+///    80: Continues to the end of the line
+///    40: Enclosed with reverse matching:
+///          Quotes match same quotes 
+///          "<" matches with ">", "{" with "}" etc
+///          Characters are in reverse order
+
+int	00
+char	00
+float	00
+double	00
+void	00
+unsigned	00
+long	00
+short	00
+static	00
+const	00
+volatile	00
+
+typedef	00
+struct	00
+enum	00
+union	00
+
+extern	00
+
+if	01
+else	01
+while	01
+for	01
+do	01
+switch	01
+case	01
+default	01
+break	01
+continue	01
+return	01
+
+sizeof	01
+
+/// c++ items
+
+bool	00
+true	00
+false	00
+
+class	00
+template	00
+public	00
+private	00
+protected	00
+virtual	00
+this	00
+
+namespace	00
+using	00
+
+new	01
+delete	01
+
+catch	01
+
+#define	82
+#if	82
+#ifdef	82
+#ifndef	82
+#else	82
+#elif	82
+#endif	82
+#include	82
+
+//	85
+
+<<	03
+>>	03
+==	03
+!=	03
+<=	03
+>=	03
+&&	03
++=	03
+-=	03
+*=	03
+/=	03
+<<=	03
+>>=	03
+++	03
+--	03
+||	03
+<	03
+>	03
+(	03
+)	03
+=	03
+-	03
++	03
+*	03
+/	03
+&	03
+|	03
+^	03
+%	03
+!	03
+.	03
+~	03
+,	03
+;	03
+:	03
+[	03
+]	03
+{	03
+}	03
+
+"	44
+'	44

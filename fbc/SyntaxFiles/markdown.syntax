@@ -1,0 +1,24 @@
+//////////////////////////////////////////////////////
+/// Syntax Highlight - MARKDOWN
+
+[params]
+CaseInsensitive
+///brackets
+
+[Items]
+/// {seTypes, seReserved, sePredef, seSymbols, seString, seComment} _SyntaxElement;
+
+/// Quotes
+"	45	sQuote
+'	45	sQuote
+
+///Headings
+>	81
+#	82
+!	81
+
+///Highlights
+**	43
+__	43
+*	44
+_	44

@@ -1,0 +1,92 @@
+_FBC - TEXT EDITOR
+
+_Move around:
+|arrows|	Move around
+|PgeUp|	Top Page / Page Up
+|PgeDn|	Bottom Page / Page Down
+|Home|	Start of Line
+|Home Home|	Start of File
+|End|	End of Line
+|End End|	End of File
+|Sh-|(above)	Define / Extend Block (whole Lines)
+
+|^ <-| or |^T|	Move previous word
+|^ ->| or |^Y|	Move next word
+
+|^E|	eXchange position with the Bookmark
+|^G|o to	Go to Line Number
+|^W|	Go to Matching Bracket |() [] {}|
+
+_Search:
+|^F|ind	Find text:
+	  |^F| changes Find Mode: Strict, Case Insensitive OR Allow wilds (|#@&?~^|)
+	  |up down| goes thru search history
+|^N|ext	Find next occurrence
+|^P|rev	Find previous occurrence
+
+_Make Changes:
+	Just type characters to insert text
+|Ins|	Insert Space
+|Del|	Delete character at cursor
+|BackSpace|	Delete character left of cursor / Append lines
+|Enter|	New Line / Split Line
+|Alt-Enter|	New Line (no split). Same as |End|, |Enter|
+|Tab|	Insert Tab character
+
+|^K|	Change Case of Word: lower > Mixed > UPPER
+|^A|	Auto Complete identifier (Based on preceeding text. Repeatable)
+|^D|	Duplicate Line
+|^Del|	Delete word OR Spaces
+|Alt-Del| or |^L|	Delete to End of Line
+|Sh-Del|	Delete Line
+|^up|	Move line up
+|^down|	Move line down
+|Sh <-| or |^]|	Outdent Line / Block
+|Sh ->| or |^\\|	Indent Line / Block
+
+_Clipboard Comands:
+|^C|	Block Copy to Clipboard. If no Block defined, use Word / Quote / Bracketted / Rest of line
+|^X|	Block Cut to Clipboard. "
+|^V|	Paste Clipboard at cursor
+
+_Block Comands:
+|^B^B|	Define Block begin / end
+|^B^A|	Define Block as entire file
+|^B^G|	Go to Block
+|^B^T|	Block expand/compress Tabs
+|^B^H|	Block convert between Hex and Hex/"ASCII"
+|^B^I|	Block convert between Hex and ASCII
+|^B^F|	Block Format: Fill lines with words, Break lines, Preserve paragraph breaks
+|^B^R|	Read Block from file
+|^B^W|	Write Block to file
+|^B^C|	Compare Block with Clipboard
+	  Specify the Sync Threshold (number ofcharacters)
+	  Result will be in Clipboard
+	  Common sections are included
+	  Text unique to the original Clipboard are shown |<####example####>|
+	  Text unique to the Block are shown |<<####example####>>|
+
+_Macros:
+|^R Key|	Record subsequent keystrokes to a Key/Alt-Key/^Key. |^R| finishes
+	These can contain any commands and/or text. Create super commands
+|^R Key ^R|	Clear the macro on Key
+|Key|	Replay recorded macro. If in Block, it repeats until out of Block
+|^R ^R|	Display all the Macros
+
+_Other:
+|^Z|	Undo (unlimited)
+set|^U|p	Editor settings
+	Parameters: (use |Up| / |Down|)
+	  [1] Type Mode - Insert OR Overwrite (where typing replaces rather than inserts)
+	  [2] Tab Size - Defines how tabs are displayed AND converted (see |^B^T|)
+	  [3] Auto Indent - After |Enter| spaces are added to match previous line
+	  [4] Outdent Destructive - Allows non blank characters to be deleted while Outdenting
+	  [5] Syntax Highlight - Manually select sytax (normally set by file\'s extension)
+	      This setting is remembered for each file type
+|^S|ave	Save File
+|Esc|	Quit:
+	  Allows renaming the file before saving
+	  |Enter| to save
+	  |Esc| returns to editor
+	  |^D| to Discard changes and exit
+	  |^F| to change the file format: |LF| > |CR+LF| > |CR|

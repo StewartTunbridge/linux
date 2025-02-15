@@ -1,0 +1,129 @@
+_FBC - FILE BROWSER for CONSOLE
+
+Displays and manipulates files and directories intuitively
+Commands operate on multiple objects when Tagged
+Symbolic Links (*) are listed with the target item (=>)
+Pipes (>) are listed
+Title bar shows the current directory and statistics
+Sorting column is highlighted
+Inside many commands: |Up| / |Down| / |Tab| cycle thru parameters, past entries and Bookmarks
+Command line: {Initial Path || |0| || |1| || |2|}
+
+_Change Selection:
+|Up| / |Down|	Change Selection
+|PgeUp|	Top Page / Page Up
+|PgeDn|	Bottom Page / Page Down
+|Home|	Select First
+|End|	Select Last
+|Sh-|(above)	Tag/Untag while changing selection
+|a|-|z| |0|-|9|	Type part of a name to jump there. Works for all lists
+
+_Commands
+|SPACE|	Tag/Untag selected item
+|^A|ll 	Tag/Untag all items
+|Enter|	Move into selected Directory
+	Edit / Execute / Open File
+	Go to Target of a Symbolic Link
+|Esc|	Move to Parent Directory
+|Tab|	Cycle between Bookmarks
+|F5|	Re-read Directory (see Setup [6])
+|^F|ind	Find Files within current directory. |Up| and |Down| to change parameters:
+	[1] Named - specify the file name (or part thereof)
+	  Change Find Mode |^F|: Strict, NoCase OR Wild (|#@&?~^|)
+	    Strict: exact match required
+	    NoCase: letter case is ignored
+	    Wild: |#|=0-9, |@|=a-z,A-Z, 
+	          |&|=any nonletter, |?|=anything,
+	          |~<char>|=anything but <char>,
+	          |^<char>|=Control-<char>.
+	      eg |@@@@-####|, |&word&|, |abc~d|, |Field1^IField2|, |Line1^JLine2|
+	[2] Containing (optional)
+	  Change Find Mode |^F|: as above
+	[3] Max File Size
+	[4] Search sub directories (Yes = recursive search)
+	[5] Inclusions: All files, Unique files or Duplicate files
+	[6..8] Only when Inclusions is not All files, Specify uniqueness:
+	  [6] Name must be unique, [7] Size .., [8] Datetime ..
+	Results are listed with relative paths*
+|^G|oto	Go to a directorty. Creates a bookmark first
+|/| 	Menu: Bring up the menu: |F|ile |T|ag |M|anage |V|iew |S|etup |Q|uit
+|^Q|uit
+
+
+_|F|ile Menu:
+|O|pen selected file (|^\\| or |Alt-Enter|) using Windows file association in WINDOWS. For LINUX...
+  Run bash script: |ext.sh FILENAME FILEPATH| if it exists, otherwise use |xdg-open FILENAME|
+    |ext| is the file extension lower-cased. Eg |floom.Txt| will use |txt.sh|
+    FILENAME is the local filename with extension
+    FILEPATH is the current directory
+|E|dit (|^E|): Text edit selected file with the built in editor
+  This includes syntax highlighting, macros, auto complete, formatting, conversion ...
+  The Syntax is defined in |ext.syntax| where |ext| is the file extension lower-cased
+  An alternative editor can be selected in Setup [7]
+Edit |H|ex (|^H|): Edit selected file in raw hex
+e|X|ecute (|^X|): Run a command line, default is the selected item
+|N|ew (|^N|): Create a new File, Directory or Link
+|C|opy (|^C|) seleted item(s)
+|M|ove (|^O|) seleted item(s)
+|D|elete (|Del|) seleted item(s) permanently
+|R|ename (|^R| or |F2|) seleted item(s) using a mask: Examples
+   Change name: |nnnnn.xxx|
+   Change name, keep extensions: |nnnnn.*|
+   Keep name, change extension: |*.xxx|
+   Auto increment portion: |FileNo###.*|
+   Auto increment prepending original name: |##*.*|
+|P|roperties (|^P|): Change attributes of seleted item(s)
+   Parameters: (use |Up| / |Down|). Only modified parameters are applied
+     [1] Attributes: Use |Left| / |Right| to move and |SPACE| to toggle
+     [2] Owner
+     [3] Group
+     [4] Date and Time
+|T|
+
+_|T|ag Menu:
+|A|ll	Tag / Untag all (|^A|)
+|I|nvert	Reverse tagging
+|E|nd	Tag/Untag to end
+
+_|M|anage Menu:
+|S|ync: Duplicates Directories into the Destination
+   Only copies files / directories as needed
+   Deletes unmatched files / directories from the Destination
+   Scans first then presents an action summary before proceeding
+   The list of required copy and delete operations are added to the log
+|O|rganize: Moves all files into created directories by date and/or extension:
+  A Mask determines the directory structure
+  This can contain |X| for the file extension, |YYYY|, |YY|, |MM|, |DD| for the file Year, Month and Day
+  Examples: |YY/MM/DD YYYY-MM X/YYYY|
+
+_|V|iew Menu:
+|S|ort (|^S|) by Filename, Extension, Path*, Age, Size
+|C|olumns to display: Attributes, Owners, Date Time, Size
+|T|ree: Show tree of local Directories
+  Navigate to desired location, examining statistics
+  Press |Enter| to go there otherwise press |Esc|
+|B|reakdown (|^B|): Shows file list grouped by Extension or Directory with statistics:
+  Columns are Count, Total Size, Extension/Directory
+  |^S|ort by different columns
+  |Enter| go to the Directory OR Tag matching Extensions
+  |Esc| to quit
+|D|irSize (|^L|): Show Directory size of file contents (recursive)
+|L|og: Opens fbc operation log: LINUX ~/fbc.log  WINDOWS \\fbc.log
+
+_|S|etup Menu (|^U|): |Up| and |Down| to select parameters:
+  [1] Colour theme [^Custom]: Pick from 3 default colour palettes
+      Type |^C| to adjust each colour indiviually
+  [2] Copy/Sync: Tolerance regional time differences (whole hours) when checking existing files
+  [3] Copy: Ignore files containing ANY of these (space separated) items
+  [4] Search: Copy/Move: Include local path in Destination
+  [5] Default action of the |Enter| key on a non-executable file
+  [6] Execute/Open/Edit: Reread Directory
+  [7] External text editor (blank for internal editor)
+
+_Resource Files: Syntax (and Shell scripts in Linux):
+  Searched for in order:
+    -Current Directory
+    -Starting Directory
+    -Home Directory: $HOMEPATH in WINDOWS, $HOME in LINUX
+    -Config Directory: ~/.config/fbc  (LINUX only)
+    -Anywhere along $PATH
